@@ -1,4 +1,5 @@
-import {List, Item, Title, Subtitle} from "./PageBoard.styled"
+import {List, Item, Title, Subtitle} from "./PageBoard.styled";
+import { format, differenceInHours, formatDistanceStrict } from "date-fns";
 
 function PageBoard({event}) {
     return (
@@ -8,8 +9,8 @@ function PageBoard({event}) {
                         <Subtitle>{location}</Subtitle>
                         <Subtitle>{speaker}</Subtitle>
                         <Subtitle>{type}</Subtitle>
-                        <Subtitle>{time.start}</Subtitle>
-                        <Subtitle>{time.end}</Subtitle>
+                        <Subtitle> {format(new Date(time.start), "dd MMMM yyyy, HH:mm")}</Subtitle>
+                        <Subtitle>{formatDistanceStrict(new Date(time.start), new Date(time.end))}</Subtitle>
                     </Item>
         })}</List>
     )
